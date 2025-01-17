@@ -1,0 +1,9 @@
+# config.yml
+rewards:
+  - BEACON
+  - BARRIER
+  - BEDROCK
+  - PLAYER_HEAD
+  - DIAMOND
+  - NETHERITE_INGOT
+  - EMERALD
