@@ -1,0 +1,8 @@
+name: FishingPlugin
+version: 1.0
+main: com.Jackpotjunkie.fishingplugin.FishingPlugin
+api-version: 1.20
+commands:
+  Angel:
+    description: Erhalte die Mega Duper Angel
+    usage: /Angel
