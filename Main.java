@@ -1,4 +1,4 @@
-package com.yourname.fishingplugin;
+package com.Jackpotjunkie.fishingplugin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -17,27 +17,24 @@ public class FishingPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         Bukkit.getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
     }
 
     @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public void onDisable()
     }
 
     @EventHandler
     public void onPlayerFish(PlayerFishEvent event) {
         Player player = event.getPlayer();
-
-        // Check if the player is using the Mega Duper Angel
+        
         if (player.getInventory().getItemInMainHand().getType() == Material.FISHING_ROD &&
             player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Mega Duper Angel")) {
 
-            // Check if the player has caught a fish
+            
             if (event.getState() == PlayerFishEvent.State.CAUGHT_FISH) {
-                // Randomly select a reward
+                
                 ItemStack reward = getRandomReward();
                 player.getInventory().addItem(reward);
                 player.sendMessage("Du hast ein seltenes Item gefangen: " + reward.getType().toString());
@@ -50,7 +47,7 @@ public class FishingPlugin extends JavaPlugin implements Listener {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (command.getName().equalsIgnoreCase("Angel")) {
-                // Give the player the Mega Duper Angel
+                
                 ItemStack fishingRod = new ItemStack(Material.FISHING_ROD);
                 fishingRod.addEnchantment(Enchantment.DURABILITY, 3);
                 ItemMeta meta = fishingRod.getItemMeta();
@@ -69,7 +66,7 @@ public class FishingPlugin extends JavaPlugin implements Listener {
         FileConfiguration config = getConfig();
         List<String> rewards = config.getStringList("rewards");
 
-        // Randomly select a reward from the config
+        
         String reward = rewards.get(new Random().nextInt(rewards.size()));
         return new ItemStack(Material.getMaterial(reward));
     }
